@@ -596,6 +596,7 @@ def create_movie(username):
     img_trans_in = [i for i in img_trans_in if i != -1]
     img_trans_out = [i for i in img_trans_out if i != -1]
 
+    print(durations)
     if not base64_datas:
         return jsonify({'message': 'no images provided'})
 
@@ -647,8 +648,8 @@ def create_movie(username):
             transition_in_clip = clip.set_duration(0.5)
             clips.append(transition_in_clip)
             
-            clip_tmp = clip.set_duration(durations[idx] - 1)
-        if  round(durations[idx] - 1, 2) != 0:
+        clip_tmp = clip.set_duration(durations[idx] - 1)
+        if round(durations[idx] - 1, 2) != 0:
             clips.append(clip_tmp)
 
         if img_trans_out[idx] != 0:
